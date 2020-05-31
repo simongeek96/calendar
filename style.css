@@ -75,6 +75,10 @@ body {
   transition: background-color .2s ease-out;
 }
 
+.date-picker .selected-date {
+  margin: 10px;
+}
+
 
 .date-picker .dates .month .arrows:hover {
   background-color: #808080;
