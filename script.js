@@ -67,47 +67,34 @@ function goToPrevMonth(e) {
 }
 
 function populateDates (e) {
-  let firstDay = new Date(year, month).getDay();
-  let daysInMonth = 32 - new Date(year, month, 32).getDate();
-  
-  let tbl = document.getElementsByClassName ('days');
+  days_element.innerHTML = '';
+  let amount_days = 31;
 
-  tbl.innerHTML = "";
-  
-  monthAndYear.innerHTML = months[month] + " " + year;
-  selectedYear.value = year;
-  selectedMonth.value = month;
+  if (month == 1) {
+    amount_days = 28
+  }
 
-  
-  //----------------------------------------------------------
-  // days_element.innerHTML = '';
-  // let amount_days = 31;
-
-  // if (month == 1) {
-  //   amount_days = 28
-  // }
-
-  // for (let i = 0; i < amount_days; i++) {
-  //   const day_element = document.createElement('div');
-  //   day_element.classList.add('day');
-  //   day_element.textContent = i + 1;
+  for (let i = 0; i < amount_days; i++) {
+    const day_element = document.createElement('div');
+    day_element.classList.add('day');
+    day_element.textContent = i + 1;
     
-  //   if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
-  //     days_element.classList.add('selected');
-  //   }
+    if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
+      days_element.classList.add('selected');
+    }
 
-  //   day_element.addEventListener('click', function () {
-  //       selectedDate = new Date(year + '-' + (month +  1) + '-' + (i + 1));
-  //       selectedDay = (i + 1);
-  //       selectedMonth = month;
-  //       selectedYear = year;
-  //       selected_date_element.textContent = formatDate(selectedDate);
-  //       selected_date_element.dataset.value = selectedDate;
-  //       populateDates();
-  //   });
+    day_element.addEventListener('click', function () {
+        selectedDate = new Date(year + '-' + (month +  1) + '-' + (i + 1));
+        selectedDay = (i + 1);
+        selectedMonth = month;
+        selectedYear = year;
+        selected_date_element.textContent = formatDate(selectedDate);
+        selected_date_element.dataset.value = selectedDate;
+        populateDates();
+    });
 
-  //   days_element.appendChild(day_element);
-  // }
+    days_element.appendChild(day_element);
+  }
 }
 
 function checkEventPathForClass(path, selector) {
@@ -141,5 +128,3 @@ window.addEventListener('keydown', function (e) {
     goToNextMonth (e);
   }
 });
-// < keycode 37
-// > keycode 39
