@@ -49,7 +49,7 @@ function goToNextMonth(e) {
     year++;
   }
   mth_element.textContent = months[month] + ' ' + year;
-  daysInMonth(month, year);
+  populateDates();
 }
 
 function goToPrevMonth(e) {
@@ -59,7 +59,7 @@ function goToPrevMonth(e) {
     year--;
   }
   mth_element.textContent = months[month] + ' ' + year;
-  daysInMonth(month, year);
+  populateDates();
 }
 
 
@@ -73,10 +73,10 @@ function goToPrevMonth(e) {
 
 function populateDates (e) {
   days_element.innerHTML = '';
-  const amount_days = daysInMonth();
+  const amount_days = daysInMonth(month, year);
 
   function daysInMonth(month, year) {
-    return new Date(year, month, 0).getDate();
+    return new Date(year, month + 1, 0).getDate();
  }
 
   for (let i = 0; i < amount_days; i++) {
@@ -89,7 +89,7 @@ function populateDates (e) {
     }
 
     day_element.addEventListener('click', function () {
-        selectedDate = new Date(year + '-' + (month +  1) + '-' + (i + 1));
+        selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
         selectedDay = (i + 1);
         selectedMonth = month;
         selectedYear = year;
