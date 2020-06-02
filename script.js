@@ -29,7 +29,7 @@ selected_date_element.dataset.value = selectedDate;
 
 
 
-// populateDates();
+populateDates();
 
 date_picker_element.addEventListener('click', toggleDatePicker);
 next_mth_element.addEventListener('click', goToNextMonth);
@@ -49,7 +49,7 @@ function goToNextMonth(e) {
     year++;
   }
   mth_element.textContent = months[month] + ' ' + year;
-  daysInMonth();
+  daysInMonth(month, year);
 }
 
 function goToPrevMonth(e) {
@@ -57,57 +57,50 @@ function goToPrevMonth(e) {
   if (month < 0) {
     month = 11;
     year--;
-
-
   }
-
-
-
   mth_element.textContent = months[month] + ' ' + year;
-  daysInMonth();
+  daysInMonth(month, year);
 }
 
-function daysInMonth(month,year) {
-   return new Date(year, month, 0).getDate();
-}
 
-console.log(daysInMonth(2, 2019));
-console.log(daysInMonth(2, 2020));
 
-daysInMonth(6, 2019);
-daysInMonth(1, 2019);
-daysInMonth(1, 2020);
+// console.log(daysInMonth(2, 2019));
+// console.log(daysInMonth(2, 2020));
 
-// function populateDates (e) {
-//   days_element.innerHTML = '';
-//   let amount_days = 31;
+// daysInMonth(7, 2019);
+// daysInMonth(2, 2019);
+// daysInMonth(2, 2020);
 
-//   if (month == 1) {
-//     amount_days = 28
-//   }
+function populateDates (e) {
+  days_element.innerHTML = '';
+  const amount_days = daysInMonth();
 
-//   for (let i = 0; i < amount_days; i++) {
-//     const day_element = document.createElement('div');
-//     day_element.classList.add('day');
-//     day_element.textContent = i + 1;
+  function daysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+ }
+
+  for (let i = 0; i < amount_days; i++) {
+    const day_element = document.createElement('div');
+    day_element.classList.add('day');
+    day_element.textContent = i + 1;
     
-//     if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
-//       days_element.classList.add('selected');
-//     }
+    if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
+      days_element.classList.add('selected');
+    }
 
-//     day_element.addEventListener('click', function () {
-//         selectedDate = new Date(year + '-' + (month +  1) + '-' + (i + 1));
-//         selectedDay = (i + 1);
-//         selectedMonth = month;
-//         selectedYear = year;
-//         selected_date_element.textContent = formatDate(selectedDate);
-//         selected_date_element.dataset.value = selectedDate;
-//         populateDates();
-//     });
+    day_element.addEventListener('click', function () {
+        selectedDate = new Date(year + '-' + (month +  1) + '-' + (i + 1));
+        selectedDay = (i + 1);
+        selectedMonth = month;
+        selectedYear = year;
+        selected_date_element.textContent = formatDate(selectedDate);
+        selected_date_element.dataset.value = selectedDate;
+        populateDates();
+    });
 
-//     days_element.appendChild(day_element);
-//   }
-// }
+    days_element.appendChild(day_element);
+  }
+}
 
 function checkEventPathForClass(path, selector) {
   for (let i = 0; i < path.length; i++) {
