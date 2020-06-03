@@ -12,6 +12,7 @@ date_picker_element.addEventListener('click', toggleDatePicker);
 
 let date = new Date();
 let day = date.getDate();
+let dayOfWeek = date.getDay();
 let month = date.getMonth();
 let year = date.getFullYear();
 
@@ -19,6 +20,7 @@ let selectedDate = date;
 let selectedDay = day;
 let selectedMonth = month;
 let selectedYear = year;
+let selectedDayOfWeek = dayOfWeek;
 
 let monthAndYear = document.getElementsByClassName('dates');
 
@@ -63,14 +65,6 @@ function goToPrevMonth(e) {
 }
 
 
-
-// console.log(daysInMonth(2, 2019));
-// console.log(daysInMonth(2, 2020));
-
-// daysInMonth(7, 2019);
-// daysInMonth(2, 2019);
-// daysInMonth(2, 2020);
-
 function populateDates (e) {
   days_element.innerHTML = '';
   const amount_days = daysInMonth(month, year);
@@ -88,11 +82,14 @@ function populateDates (e) {
       days_element.classList.add('selected');
     }
 
+    
+
     day_element.addEventListener('click', function () {
         selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
         selectedDay = (i + 1);
         selectedMonth = month;
         selectedYear = year;
+        selectedDayOfWeek = dayOfWeek;
         selected_date_element.textContent = formatDate(selectedDate);
         selected_date_element.dataset.value = selectedDate;
         populateDates();

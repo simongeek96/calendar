@@ -79,6 +79,15 @@ body {
   margin: 10px;
 }
 
+.week {
+  height: 25px;
+  margin-top: 10px;
+}
+
+.week span {
+  margin: 15px;
+}
+
 
 .date-picker .dates .month .arrows:hover {
   background-color: #808080;
