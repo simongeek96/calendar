@@ -44,7 +44,7 @@ function toggleDatePicker(e) {
   }
 }
 
-function goToNextMonth(e) {
+function goToNextMonth(e) { //переключение на след. месяц
   month++;
   if (month > 11) {
     month = 0;
@@ -54,7 +54,7 @@ function goToNextMonth(e) {
   populateDates();
 }
 
-function goToPrevMonth(e) {
+function goToPrevMonth(e) { //переключение на пред. месяц
   month--;
   if (month < 0) {
     month = 11;
@@ -65,7 +65,7 @@ function goToPrevMonth(e) {
 }
 
 
-function populateDates (e) {
+function populateDates (e) {  //распределение дат
   days_element.innerHTML = '';
   const amount_days = daysInMonth(month, year);
 
@@ -84,7 +84,7 @@ function populateDates (e) {
 
     
 
-    day_element.addEventListener('click', function () {
+    day_element.addEventListener('click', function () { //выбор определённой даты
         selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
         selectedDay = (i + 1);
         selectedMonth = month;
@@ -122,7 +122,7 @@ function formatDate(d) {
   return day + '.' + month + '.' + year;
 }
 
-window.addEventListener('keydown', function (e) {
+window.addEventListener('keydown', function (e) { //пееключение с помощью стрелок на клавиатуре
   if (e.keyCode == 37) {
     goToPrevMonth (e);
   }
