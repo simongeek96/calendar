@@ -65,7 +65,7 @@ function goToPrevMonth(e) { //переключение на пред. месяц
 }
 
 
-function populateDates (e) {  //распределение дат
+function populateDates (e) {  //отрисовка дат
   days_element.innerHTML = '';
   const amount_days = daysInMonth(month, year);
 
