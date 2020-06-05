@@ -7,7 +7,7 @@ const prev_mth_element = document.querySelector('.date-picker .dates .month .pre
 const days_element = document.querySelector('.date-picker .dates .days');
 
 const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-
+const daysOfWeek = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 date_picker_element.addEventListener('click', toggleDatePicker);
 
 let date = new Date();
