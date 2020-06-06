@@ -16,9 +16,9 @@ let dayOfWeek = date.getDay();
 let month = date.getMonth();
 let year = date.getFullYear();
 <<<<<<< HEAD
-let lastDay = new Date(date.getFullYear(), date.getMonth()+1,0).getDate;
-let WlastDay = new Date(date.getFullYear(), date.getMonth(),lastDay).getDay;
-let WfirstDay = new Date(date.getFullYear(), date.getMonth(),1).getDay;
+// let lastDay = new Date(date.getFullYear(), date.getMonth()+1,0).getDate;
+// let WlastDay = new Date(date.getFullYear(), date.getMonth(),lastDay).getDay;
+// let WfirstDay = new Date(date.getFullYear(), date.getMonth(),1).getDay;
 
 
 
@@ -132,14 +132,15 @@ function populateDates (e) {  //отрисовка дат
   }
 }
 
-if (WfirstDay === 0) {
-  for (let i = 1; i < WfirstDay; i++) day_element.classList.add('day'); 
-} else {
-  for (let i = 0; i < 6; i++) day_element.classList.add('day');
-}
-  if (WlastDay === 0) {
-    for (let i = WlastDay; i < 7; i++) day_element.classList.add('day');
-  }
+// if (WfirstDay === 0) {
+//   for (let i = 1; i < WfirstDay; i++) day_element.classList.add('day'); 
+// } else {
+//   for (let i = 0; i < 6; i++) day_element.classList.add('day');
+// }
+  
+// if (WlastDay === 0) {
+//    for (let i = WlastDay; i < 7; i++) day_element.classList.add('day');
+// }
 
 function checkEventPathForClass(path, selector) {
   for (let i = 0; i < path.length; i++) {
