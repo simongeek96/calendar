@@ -17,12 +17,15 @@ let month = date.getMonth();
 let year = date.getFullYear();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // let lastDay = new Date(date.getFullYear(), date.getMonth()+1,0).getDate;
 // let WlastDay = new Date(date.getFullYear(), date.getMonth(),lastDay).getDay;
 // let WfirstDay = new Date(date.getFullYear(), date.getMonth(),1).getDay;
 
 
 
+=======
+>>>>>>> parent of 8e3627c... Update script.js
 =======
 >>>>>>> parent of 8e3627c... Update script.js
 =======
@@ -87,8 +90,11 @@ function populateDates (e) {  //отрисовка дат
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> parent of 8e3627c... Update script.js
 =======
 >>>>>>> parent of 8e3627c... Update script.js
 =======
@@ -102,6 +108,7 @@ function populateDates (e) {  //отрисовка дат
       days_element.classList.add('selected');
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -120,6 +127,9 @@ function populateDates (e) {  //отрисовка дат
     // }
     //-----------------------------
     console.log(month);
+=======
+    
+>>>>>>> parent of 8e3627c... Update script.js
 =======
     
 >>>>>>> parent of 8e3627c... Update script.js
