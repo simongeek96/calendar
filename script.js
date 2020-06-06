@@ -15,12 +15,15 @@ let day = date.getDate();
 let dayOfWeek = date.getDay();
 let month = date.getMonth();
 let year = date.getFullYear();
-// let lastDay = new Date(date.getFullYear(), date.getMonth()+1,0).getDate;
-// let WlastDay = new Date(date.getFullYear(), date.getMonth(),lastDay).getDay;
-// let WfirstDay = new Date(date.getFullYear(), date.getMonth(),1).getDay;
+<<<<<<< HEAD
+let lastDay = new Date(date.getFullYear(), date.getMonth()+1,0).getDate;
+let WlastDay = new Date(date.getFullYear(), date.getMonth(),lastDay).getDay;
+let WfirstDay = new Date(date.getFullYear(), date.getMonth(),1).getDay;
 
 
 
+=======
+>>>>>>> parent of 8e3627c... Update script.js
 
 let selectedDate = date;
 let selectedDay = day;
@@ -56,8 +59,6 @@ function goToNextMonth(e) { //переключение на след. месяц
     month = 0;
     year++;
   }
-
-
   mth_element.textContent = months[month] + ' ' + year;
   populateDates();
 }
@@ -81,7 +82,11 @@ function populateDates (e) {  //отрисовка дат
     return new Date(year, month + 1, 0).getDate();
  }
 
+<<<<<<< HEAD
 
+
+=======
+>>>>>>> parent of 8e3627c... Update script.js
   for (let i = 0; i < amount_days; i++) {
     const day_element = document.createElement('div');
     day_element.classList.add('day');
@@ -91,15 +96,10 @@ function populateDates (e) {  //отрисовка дат
       days_element.classList.add('selected');
     }
 
-    // if (WfirstDay === 0) {
-    //   for(let i = 1; i < WfirstDay; i++) day_element.classList.add('day'); 
-    // } else {
-    //   for (let i = 0; i < 6; i++) day_element.classList.add('day');
-    // }
+<<<<<<< HEAD
+
     
-    // if (WlastDay === 0) {
-    //   for (let i = WlastDay; i < 7; i++) day_element.classList.add('day');
-    // }
+
 
     //----------------------------
     // if (dayOfWeek!=1) {
@@ -113,6 +113,9 @@ function populateDates (e) {  //отрисовка дат
     // }
     //-----------------------------
     console.log(month);
+=======
+    
+>>>>>>> parent of 8e3627c... Update script.js
 
     day_element.addEventListener('click', function () { //выбор определённой даты
         selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
@@ -128,6 +131,15 @@ function populateDates (e) {  //отрисовка дат
     days_element.appendChild(day_element);
   }
 }
+
+if (WfirstDay === 0) {
+  for (let i = 1; i < WfirstDay; i++) day_element.classList.add('day'); 
+} else {
+  for (let i = 0; i < 6; i++) day_element.classList.add('day');
+}
+  if (WlastDay === 0) {
+    for (let i = WlastDay; i < 7; i++) day_element.classList.add('day');
+  }
 
 function checkEventPathForClass(path, selector) {
   for (let i = 0; i < path.length; i++) {
@@ -152,7 +164,7 @@ function formatDate(d) {
   return day + '.' + month + '.' + year;
 }
 
-window.addEventListener('keydown', function (e) { //переключение с помощью стрелок на клавиатуре
+window.addEventListener('keydown', function (e) { //пееключение с помощью стрелок на клавиатуре
   if (e.keyCode == 37) {
     goToPrevMonth (e);
   }
