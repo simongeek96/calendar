@@ -15,9 +15,12 @@ let day = date.getDate();
 let dayOfWeek = date.getDay();
 let month = date.getMonth();
 let year = date.getFullYear();
+// let firstDay = new Date(date.getFullYear(), date.getMonth).getDate;
+// let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate;
 // let lastDay = new Date(date.getFullYear(), date.getMonth()+1,0).getDate;
 // let WlastDay = new Date(date.getFullYear(), date.getMonth(),lastDay).getDay;
 // let WfirstDay = new Date(date.getFullYear(), date.getMonth(),1).getDay;
+let firstDay = [7, 1, 2, 3, 4, 5, 6][new Date(year, month, 1).getDay()];
 
 
 let selectedDate = date;
@@ -88,24 +91,14 @@ function populateDates (e) {  //отрисовка дат
       days_element.classList.add('selected');
     }
 
-
-
+    //----------------------------
+    // function getLastDayOfMonth(year, month) {
+    //   let date = new Date(year, month + 1, 0);
+    //   return date.getDate();
+    // }
     
 
-
-    //----------------------------
-    // if (dayOfWeek!=1) {
-    //   function getLastDayOfMonth(year, month) {
-    //     let date = new Date(year, month + 1, 0);
-    //     return date.getDate();
-    //   }
-      
-    //   selectedMonth + getLastDayOfMonth(year, month);
-  
-    // }
     //-----------------------------
-    console.log(month);
-
 
     day_element.addEventListener('click', function () { //выбор определённой даты
         selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
