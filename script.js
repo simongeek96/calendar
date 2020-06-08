@@ -96,8 +96,6 @@ function populateDates (e) {  //отрисовка дат
     //   let date = new Date(year, month + 1, 0);
     //   return date.getDate();
     // }
-    
-
     //-----------------------------
 
     day_element.addEventListener('click', function () { //выбор определённой даты
