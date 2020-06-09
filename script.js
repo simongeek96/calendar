@@ -22,7 +22,6 @@ let year = date.getFullYear();
 // let WfirstDay = new Date(date.getFullYear(), date.getMonth(),1).getDay;
 let firstDay = [7, 1, 2, 3, 4, 5, 6][new Date(year, month, 1).getDay()];
 
-
 let selectedDate = date;
 let selectedDay = day;
 let selectedMonth = month;
@@ -36,14 +35,11 @@ mth_element.textContent = months[month] + ' ' + year;
 selected_date_element.textContent = formatDate(date);
 selected_date_element.dataset.value = selectedDate;
 
-
-
 populateDates();
 
 date_picker_element.addEventListener('click', toggleDatePicker);
 next_mth_element.addEventListener('click', goToNextMonth);
 prev_mth_element.addEventListener('click', goToPrevMonth);
-
 
 function toggleDatePicker(e) {
   if (!checkEventPathForClass(e.path, 'dates')) {
@@ -71,7 +67,6 @@ function goToPrevMonth(e) { //переключение на пред. месяц
   populateDates();
 }
 
-
 function populateDates (e) {  //отрисовка дат
   days_element.innerHTML = '';
   const amount_days = daysInMonth(month, year);
@@ -79,8 +74,6 @@ function populateDates (e) {  //отрисовка дат
   function daysInMonth(month, year) {
     return new Date(year, month + 1, 0).getDate();
  }
-
-
 
   for (let i = 0; i < amount_days; i++) {
     const day_element = document.createElement('div');
@@ -90,13 +83,6 @@ function populateDates (e) {  //отрисовка дат
     if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
       days_element.classList.add('selected');
     }
-
-    //----------------------------
-    // function getLastDayOfMonth(year, month) {
-    //   let date = new Date(year, month + 1, 0);
-    //   return date.getDate();
-    // }
-    //-----------------------------
 
     day_element.addEventListener('click', function () { //выбор определённой даты
         selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
@@ -112,16 +98,6 @@ function populateDates (e) {  //отрисовка дат
     days_element.appendChild(day_element);
   }
 }
-
-// if (WfirstDay === 0) {
-//   for (let i = 1; i < WfirstDay; i++) day_element.classList.add('day'); 
-// } else {
-//   for (let i = 0; i < 6; i++) day_element.classList.add('day');
-// }
-  
-// if (WlastDay === 0) {
-//    for (let i = WlastDay; i < 7; i++) day_element.classList.add('day');
-// }
 
 function checkEventPathForClass(path, selector) {
   for (let i = 0; i < path.length; i++) {
