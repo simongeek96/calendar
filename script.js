@@ -76,7 +76,7 @@ function goToPrevMonth(e) { //переключение на пред. месяц
   populateDates();
 }
 
-function populateDates (e) {  //отрисовка калкндаря
+function populateDates (e) {  //отрисовка календаря
   days_element.innerHTML = '';
   const amount_days = daysInMonth(month, year);
   
@@ -150,7 +150,7 @@ function formatDate(d) {
   return day + '.' + month + '.' + year;
 }
 
-window.addEventListener('keydown', function (e) { //пееключение с помощью стрелок на клавиатуре
+window.addEventListener('keydown', function (e) { //переключение с помощью стрелок на клавиатуре
   if (e.keyCode == 37) {
     goToPrevMonth (e);
   }
