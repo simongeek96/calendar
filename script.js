@@ -72,8 +72,6 @@ let year = date.getFullYear();
       return new Date(year, month + 1, 0).getDate();
     }
     
-    
-    
           for (let i = 0; i < amount_days; i++) {
             const day_element = document.createElement('div');
             day_element.classList.add('day');
