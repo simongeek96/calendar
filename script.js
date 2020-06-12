@@ -42,7 +42,7 @@ function toggleDatePicker(e) {
   }
 }
 
-function goToNextMonth(e) { //переключение на след. месяц
+function goToNextMonth(e) { //switching to the next month
   month++;
   if (month > 11) {
     month = 0;
@@ -52,7 +52,7 @@ function goToNextMonth(e) { //переключение на след. месяц
   populateDates();
 }
 
-function goToPrevMonth(e) { //переключение на пред. месяц
+function goToPrevMonth(e) { //switching to the prev. month
   month--;
   if (month < 0) {
     month = 11;
@@ -62,7 +62,7 @@ function goToPrevMonth(e) { //переключение на пред. месяц
   populateDates();
 }
 
-function populateDates(e) {  //отрисовка календаря
+function populateDates(e) {  //rendering calendar 
   days_element.innerHTML = '';
   
   //todo: remove this variable
@@ -91,7 +91,7 @@ function populateDates(e) {  //отрисовка календаря
       days_element.classList.add('selected');
     }
 
-    day_element.addEventListener('click', function () { //выбор определённой даты
+    day_element.addEventListener('click', function () { //choosing some date 
       selectedDate = new Date(year + '-' + (month + 1) + '-' + day);
       selectedDay = day;
       selectedMonth = month;
@@ -117,7 +117,7 @@ function checkEventPathForClass(path, selector) {
   return false;
 }
 
-function formatDate(d) { //форматирование даты
+function formatDate(d) { //formatting date
   let day = d.getDate();
   if (day < 10) {
     day = '0' + day;
@@ -130,7 +130,7 @@ function formatDate(d) { //форматирование даты
   return day + '.' + month + '.' + year;
 }
 
-window.addEventListener('keydown', function (e) { //переключение с помощью стрелок на клавиатуре
+window.addEventListener('keydown', function (e) { //switching by arrow keys
   if (e.keyCode == 37) {
     goToPrevMonth(e);
   }
