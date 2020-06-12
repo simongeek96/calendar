@@ -16,93 +16,102 @@ let day = date.getDate();
 let dayOfWeek = date.getDay();
 let month = date.getMonth();
 let year = date.getFullYear();
-// console.log(dayOfWeek);
-  
-  let selectedDate = date;
-  let selectedDay = day;
-  let selectedMonth = month;
-  let selectedYear = year;
-  let selectedDayOfWeek = dayOfWeek;
-  
-  let monthAndYear = document.getElementsByClassName('dates');
-  
+
+let selectedDate = date;
+let selectedDay = day;
+let selectedMonth = month;
+let selectedYear = year;
+let selectedDayOfWeek = dayOfWeek;
+
+let monthAndYear = document.getElementsByClassName('dates');
+
+mth_element.textContent = months[month] + ' ' + year;
+
+selected_date_element.textContent = formatDate(date);
+selected_date_element.dataset.value = selectedDate;
+
+populateDates();
+
+date_picker_element.addEventListener('click', toggleDatePicker);
+next_mth_element.addEventListener('click', goToNextMonth);
+prev_mth_element.addEventListener('click', goToPrevMonth);
+
+function toggleDatePicker(e) {
+  if (!checkEventPathForClass(e.path, 'dates')) {
+    dates_element.classList.toggle('active');
+  }
+}
+
+function goToNextMonth(e) { //переключение на след. месяц
+  month++;
+  if (month > 11) {
+    month = 0;
+    year++;
+  }
   mth_element.textContent = months[month] + ' ' + year;
-  
-  selected_date_element.textContent = formatDate(date);
-  selected_date_element.dataset.value = selectedDate;
-  
   populateDates();
-  
-  date_picker_element.addEventListener('click', toggleDatePicker);
-  next_mth_element.addEventListener('click', goToNextMonth);
-  prev_mth_element.addEventListener('click', goToPrevMonth);
-  
-  function toggleDatePicker(e) {
-    if (!checkEventPathForClass(e.path, 'dates')) {
-      dates_element.classList.toggle('active');
-    }
+}
+
+function goToPrevMonth(e) { //переключение на пред. месяц
+  month--;
+  if (month < 0) {
+    month = 11;
+    year--;
   }
+  mth_element.textContent = months[month] + ' ' + year;
+  populateDates();
+}
+
+function populateDates(e) {  //отрисовка календаря
+  days_element.innerHTML = '';
   
-  function goToNextMonth(e) { //переключение на след. месяц
-    month++;
-    if (month > 11) {
-      month = 0;
-      year++;
-    }
-    mth_element.textContent = months[month] + ' ' + year;
-    populateDates();
+  //todo: remove this variable
+  const amount_days = daysInMonth(month, year);
+
+  let currentDate = new Date(year, month, 1);
+  let weekDay = currentDate.getDay();
+  weekDay = weekDay === 0 ? 7 : weekDay;
+  currentDate.setDate(currentDate.getDate() - (weekDay - 1));
+  
+  function daysInMonth(month, year) {
+    return new Date(year, month + 1, 0).getDate();
   }
-  
-  function goToPrevMonth(e) { //переключение на пред. месяц
-    month--;
-    if (month < 0) {
-      month = 11;
-      year--;
+
+  for (let i = 0; i < 42; i++) {
+    let day = currentDate.getDate();
+    const day_element = document.createElement('div');
+    day_element.classList.add('day');
+    day_element.textContent = day;
+
+    if (currentDate.getMonth() != month) {
+      day_element.style.color = "gray";
     }
-    mth_element.textContent = months[month] + ' ' + year;
-    populateDates();
-  }
-  
-  function populateDates (e) {  //отрисовка календаря
-    days_element.innerHTML = '';
-    const amount_days = daysInMonth(month, year);
-    let currentDate = new Date(2020,5,29);
-    
-    function daysInMonth(month, year) {
-      return new Date(year, month + 1, 0).getDate();
+
+    if (selectedDay == day && selectedYear == year && selectedMonth == month) {
+      days_element.classList.add('selected');
     }
-    
-          for (let i = 0; i < amount_days; i++) {
-            const day_element = document.createElement('div');
-            day_element.classList.add('day');
-            day_element.textContent = i + 1;
-            currentDate.setMonth(currentDate.getMonth());
-            currentDate.setDate(currentDate.getDate() + 2);
-            
-            if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
-                days_element.classList.add('selected');
-              }
 
     day_element.addEventListener('click', function () { //выбор определённой даты
-        selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
-        selectedDay = (i + 1);
-        selectedMonth = month;
-        selectedYear = year;
-        selectedDayOfWeek = dayOfWeek;
-        selected_date_element.textContent = formatDate(selectedDate);
-        selected_date_element.dataset.value = selectedDate;
-        populateDates();
+      selectedDate = new Date(year + '-' + (month + 1) + '-' + day);
+      selectedDay = day;
+      selectedMonth = month;
+      selectedYear = year;
+      selectedDayOfWeek = dayOfWeek;
+      selected_date_element.textContent = formatDate(selectedDate);
+      selected_date_element.dataset.value = selectedDate;
+      populateDates();
     });
 
     days_element.appendChild(day_element);
+    currentDate.setDate(currentDate.getDate() + 1);
   }
 }
 
 function checkEventPathForClass(path, selector) {
   for (let i = 0; i < path.length; i++) {
-      if (path[i].classList && path[i].classList.contains(selector)) {
-        return true;
-      }
+    if (path[i].classList && path[i].classList.contains(selector)) {
+      return true;
+    }
   }
 
   return false;
@@ -123,9 +132,9 @@ function formatDate(d) { //форматирование даты
 
 window.addEventListener('keydown', function (e) { //переключение с помощью стрелок на клавиатуре
   if (e.keyCode == 37) {
-    goToPrevMonth (e);
+    goToPrevMonth(e);
   }
   if (e.keyCode == 39) {
-    goToNextMonth (e);
+    goToNextMonth(e);
   }
 });
