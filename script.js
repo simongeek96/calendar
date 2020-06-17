@@ -4,10 +4,12 @@ const dates_element = document.querySelector('.date-picker .dates');
 const mth_element = document.querySelector('.date-picker .dates .month .mth');
 const next_mth_element = document.querySelector('.date-picker .dates .month .next-mth');
 const prev_mth_element = document.querySelector('.date-picker .dates .month .prev-mth');
+const weekDays_element = document.querySelector('.date-picker .dates .week');
 const days_element = document.querySelector('.date-picker .dates .days');
 
+
 const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-const daysOfWeek = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+const weekDays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 
 date_picker_element.addEventListener('click', toggleDatePicker);
 
@@ -26,6 +28,8 @@ let selectedDayOfWeek = dayOfWeek;
 let monthAndYear = document.getElementsByClassName('dates');
 
 mth_element.textContent = months[month] + ' ' + year;
+weekDays_element.textContent = weekDays;
+
 
 selected_date_element.textContent = formatDate(date);
 selected_date_element.dataset.value = selectedDate;
@@ -64,18 +68,24 @@ function goToPrevMonth(e) { //switching to the prev. month
 
 function populateDates(e) {  //rendering calendar 
   days_element.innerHTML = '';
+  weekDays_element.innerHTML = '';
   
-  //todo: remove this variable
-  const amount_days = daysInMonth(month, year);
-
   let currentDate = new Date(year, month, 1);
   let weekDay = currentDate.getDay();
   weekDay = weekDay === 0 ? 7 : weekDay;
   currentDate.setDate(currentDate.getDate() - (weekDay - 1));
+
+
   
   function daysInMonth(month, year) {
     return new Date(year, month + 1, 0).getDate();
   }
+
+
+  const weekDay_element = document.createElement('span');
+  weekDay_element.classList.add('day');
+  weekDay_element.textContent = weekDays;
+
 
   for (let i = 0; i < 42; i++) {
     let day = currentDate.getDate();
@@ -103,6 +113,7 @@ function populateDates(e) {  //rendering calendar
     });
 
     days_element.appendChild(day_element);
+    weekDays_element.appendChild(weekDay_element);
     currentDate.setDate(currentDate.getDate() + 1);
   }
 }
