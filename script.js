@@ -9,7 +9,7 @@ const days_element = document.querySelector('.date-picker .dates .days');
 
 
 const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-const weekDays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+const daysOfWeek = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 
 date_picker_element.addEventListener('click', toggleDatePicker);
 
@@ -68,7 +68,7 @@ function goToPrevMonth(e) { //переключение на пред. месяц
 
 function populateDates(e) {  //отрисовка календаря
   days_element.innerHTML = '';
-  weekDays_element.innerHTML = '';
+  // weekDays_element.innerHTML = '';
   
   let currentDate = new Date(year, month, 1);
   let weekDay = currentDate.getDay();
