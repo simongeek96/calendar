@@ -28,7 +28,7 @@ let selectedDayOfWeek = dayOfWeek;
 let monthAndYear = document.getElementsByClassName('dates');
 
 mth_element.textContent = months[month] + ' ' + year;
-weekDays_element.textContent = weekDays;
+// weekDays_element.textContent = weekDays;
 
 
 selected_date_element.textContent = formatDate(date);
@@ -82,9 +82,9 @@ function populateDates(e) {  //rendering calendar
   }
 
 
-  const weekDay_element = document.createElement('span');
-  weekDay_element.classList.add('day');
-  weekDay_element.textContent = weekDays;
+  // const weekDay_element = document.createElement('span');
+  // weekDay_element.classList.add('day');
+  // weekDay_element.textContent = weekDays;
 
 
   for (let i = 0; i < 42; i++) {
@@ -113,8 +113,8 @@ function populateDates(e) {  //rendering calendar
     });
 
     days_element.appendChild(day_element);
-    weekDays_element.appendChild(weekDay_element);
     currentDate.setDate(currentDate.getDate() + 1);
+    // weekDays_element.appendChild(weekDay_element);
   }
 }
 
