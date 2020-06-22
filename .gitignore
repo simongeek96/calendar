@@ -35,9 +35,3 @@ Temporary Items
 .vscode/launch.json
 
 
-dist
-node_modules
-vizcal
-.tmp
-webpack.statistics.dev.html
-webpack.statistics.prod.html
