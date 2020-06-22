@@ -28,7 +28,6 @@ let selectedDayOfWeek = dayOfWeek;
 let monthAndYear = document.getElementsByClassName('dates');
 
 mth_element.textContent = months[month] + ' ' + year;
-// weekDays_element.textContent = weekDays;
 
 
 selected_date_element.textContent = formatDate(date);
@@ -46,7 +45,7 @@ function toggleDatePicker(e) {
   }
 }
 
-function goToNextMonth(e) { //переключение на след. месяц
+function goToNextMonth(e) { //switching to next month
   month++;
   if (month > 11) {
     month = 0;
@@ -56,7 +55,7 @@ function goToNextMonth(e) { //переключение на след. месяц
   populateDates();
 }
 
-function goToPrevMonth(e) { //переключение на пред. месяц
+function goToPrevMonth(e) { //switching to prev. month
   month--;
   if (month < 0) {
     month = 11;
@@ -66,9 +65,8 @@ function goToPrevMonth(e) { //переключение на пред. месяц
   populateDates();
 }
 
-function populateDates(e) {  //отрисовка календаря
+function populateDates(e) {  //rendering calendar
   days_element.innerHTML = '';
-  // weekDays_element.innerHTML = '';
   
   let currentDate = new Date(year, month, 1);
   let weekDay = currentDate.getDay();
@@ -80,11 +78,6 @@ function populateDates(e) {  //отрисовка календаря
   function daysInMonth(month, year) {
     return new Date(year, month + 1, 0).getDate();
   }
-
-
-  // const weekDay_element = document.createElement('span');
-  // weekDay_element.classList.add('day');
-  // weekDay_element.textContent = weekDays;
 
 
   for (let i = 0; i < 42; i++) {
@@ -114,7 +107,6 @@ function populateDates(e) {  //отрисовка календаря
 
     days_element.appendChild(day_element);
     currentDate.setDate(currentDate.getDate() + 1);
-    // weekDays_element.appendChild(weekDay_element);
   }
 }
 
@@ -128,7 +120,7 @@ function checkEventPathForClass(path, selector) {
   return false;
 }
 
-function formatDate(d) { //форматирование даты
+function formatDate(d) { //formatting calendar
   let day = d.getDate();
   if (day < 10) {
     day = '0' + day;
@@ -141,7 +133,7 @@ function formatDate(d) { //форматирование даты
   return day + '.' + month + '.' + year;
 }
 
-window.addEventListener('keydown', function (e) { //переключение с помощью стрелок на клавиатуре
+window.addEventListener('keydown', function (e) { //switching from arrow keys
   if (e.keyCode == 37) {
     goToPrevMonth(e);
   }
